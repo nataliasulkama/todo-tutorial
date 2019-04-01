@@ -13,6 +13,9 @@
       <f7-button style="max-width: 120px;" raised @click="">+ Add task</f7-button>
     </f7-col>
   </f7-row>
+  
+  <!-- List preview here -->
+  
 </f7-block>
 </template>
 
