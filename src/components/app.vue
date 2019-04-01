@@ -66,6 +66,12 @@ export default {
     'create-list': CreateList
   },
   methods: {
+    getList: function(list) {
+    },
+    selectList: function(selection) {
+    },
+    checkedTasks: function(list) {
+    }
   }
 }
 </script>
