@@ -1,7 +1,7 @@
 <template>
 <f7-block>
   <f7-list no-hairlines-md id="list-form">
-    <f7-list-input v-on:input="" name="listname" type="text" placeholder="List name" clear-button required validate></f7-list-input>
+    <f7-list-input v-on:input="validateForm" name="listname" type="text" placeholder="List name" clear-button required validate></f7-list-input>
     <f7-list-input name="listitem" type="text" placeholder="What needs to be done?"></f7-list-input>
   </f7-list>
 
@@ -30,6 +30,15 @@ export default {
     }
   },
   methods: {
+    validateForm: function() {
+      let formData = this.$f7.form.convertToData('#list-form');
+      this.listName = formData.listname;
+      if (formData.listname == '') {
+        this.disabled = 1;
+      } else {
+        this.disabled = 0;
+      }
+    },
   }
 }
 </script>
