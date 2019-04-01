@@ -1,9 +1,8 @@
 <template>
 <f7-block v-if="!listSelected">
-  <h2 id="no-list">No list</h2>
+  <h2 id="no-list">No list is selected.</h2>
 </f7-block>
 <f7-block v-else>
-  <h2 id="no-list">List exists!</h2>
 </f7-block>
 </template>
 
