@@ -35,10 +35,18 @@ export default {
       this.listName = formData.listname;
       if (formData.listname == '') {
         this.disabled = 1;
+      } else if (this.listItems.length == 0) {
+        this.disabled = 1;
       } else {
         this.disabled = 0;
       }
     },
+    createList: function() {
+    },
+    addTask: function() {
+    },
+    removeTodo(selectedItem) {
+    }
   }
 }
 </script>
