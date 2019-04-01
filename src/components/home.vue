@@ -19,6 +19,10 @@ export default {
   watch: {
   },
   methods: {
+    checkTask: function(task) {
+    },
+    deleteList: function(list) {
+    }
   }
 }
 </script>
