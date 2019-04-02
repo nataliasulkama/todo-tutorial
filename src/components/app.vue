@@ -6,7 +6,25 @@
     <f7-view>
       <f7-page>
         <f7-navbar title="Lists"></f7-navbar>
-        <f7-block>Lists will be here :)</f7-block>
+        <f7-block v-if="lists.length === 0">There are no lists.</f7-block>
+
+        <div class="list-length" v-else>
+          <f7-block v-if="lists.length === 1" class="list-length">
+            You have <b>{{ lists.length }}</b> list.
+          </f7-block>
+          <f7-block v-else-if="lists.length != 0" class="list-length">
+            You have <b>{{ lists.length }}</b> lists.
+          </f7-block>
+          <f7-list no-hairlines-md>
+            <f7-list-item v-for="list in lists" @click="selectList(list)">
+              <span style="width: 65%;"> {{ list.name }} </span>
+              <span :class="{ 'all-checked': list.checked.length === list.items.length }">
+                {{ list.checked.length }} / {{ list.items.length }}
+              </span>
+              <f7-icon f7="chevron_right" size="20px"></f7-icon>
+            </f7-list-item>
+          </f7-list>
+        </div>
       </f7-page>
     </f7-view>
   </f7-panel>
@@ -31,10 +49,10 @@
 
       <f7-tabs class="tabs" swipeable>
         <f7-tab id="tab1" class="page-content" tab-active>
-          <home-page></home-page>
+          <home-page :todoList="todoList" :lists="lists" @checked="checkedTasks"></home-page>
         </f7-tab>
         <f7-tab id="tab2" class="page-content">
-          <create-list></create-list>
+          <create-list @created="getList"></create-list>
         </f7-tab>
       </f7-tabs>
 
@@ -66,6 +84,23 @@ export default {
     'create-list': CreateList
   },
   methods: {
+    getList: function(list) {
+      this.todoList = {
+        id: list.id,
+        name: list.name,
+        items: list.items,
+        checked: []
+      };
+
+      this.lists.push(this.todoList);
+    },
+    selectList: function(selection) {
+      this.todoList = selection;
+      this.$f7.panel.close();
+    },
+    checkedTasks: function(list) {
+      this.todoList.checked = list;
+    }
   }
 }
 </script>
