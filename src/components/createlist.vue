@@ -7,10 +7,10 @@
 
   <f7-row class="button-row">
     <f7-col>
-      <f7-button style="max-width: 150px;" fill @click="" :disabled="disabled == 1 ? true : false">Create list</f7-button>
+      <f7-button style="max-width: 150px;" fill @click="createList" :disabled="disabled == 1 ? true : false">Create list</f7-button>
     </f7-col>
     <f7-col>
-      <f7-button style="max-width: 120px;" raised @click="">+ Add task</f7-button>
+      <f7-button style="max-width: 120px;" raised @click="addTask">+ Add task</f7-button>
     </f7-col>
   </f7-row>
   
